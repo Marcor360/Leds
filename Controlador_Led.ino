@@ -2,9 +2,9 @@
 #include <SoftwareSerial.h>
 
 int numberShowEntry;
-int numberShowOut;
+int numberShowOut; 
 int ledPin1 = 10;      // Pin de jugadores de entrada
-int ledPin2 = 12;    // Pin de jugadores de salida
+int ledPin2 = 5;    // Pin de jugadores de salida
 int numLeds1 = 126;  // Leds de jugadores de entrada
 int numLeds2 = 125;  // Leds de jugadores de salida
 const int BUFFER_SIZE = 10;
@@ -34,9 +34,9 @@ void loop() {
     char receivedChar = mySerial.read();
 
     if (receivedChar == '\n') {
-      buffer[bufferIndex] = '\0';  
+      buffer[bufferIndex] = '\0';
       processSerialData();
-      bufferIndex = 0;  
+      bufferIndex = 0;
     } else {
       buffer[bufferIndex] = receivedChar;
       bufferIndex = (bufferIndex + 1) % BUFFER_SIZE;
@@ -65,19 +65,23 @@ void displayNumberEntry(int numberEntry, Adafruit_NeoPixel &ledStrip1) {
 
       case 1:
         turnOffAllLEDs(ledStrip1, numLeds1);
-        turnOnLEDRange(18, 35, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(0, 8, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(45, 53, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(72, 125, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         break;
 
       case 2:
         turnOffAllLEDs(ledStrip1, numLeds1);
         turnOnLEDRange(9, 26, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         turnOnLEDRange(36, 62, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(72, 125, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         break;
 
       case 3:
         turnOffAllLEDs(ledStrip1, numLeds1);
         turnOnLEDRange(0, 17, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         turnOnLEDRange(36, 62, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(72, 125, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         break;
 
       case 4:
@@ -85,6 +89,7 @@ void displayNumberEntry(int numberEntry, Adafruit_NeoPixel &ledStrip1) {
         turnOnLEDRange(0, 8, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         turnOnLEDRange(27, 35, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         turnOnLEDRange(45, 62, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(72, 125, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         break;
 
       case 5:
@@ -92,28 +97,33 @@ void displayNumberEntry(int numberEntry, Adafruit_NeoPixel &ledStrip1) {
         turnOnLEDRange(27, 44, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         turnOnLEDRange(54, 62, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         turnOnLEDRange(0, 17, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(72, 125, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         break;
       case 6:
         turnOffAllLEDs(ledStrip1, numLeds1);
         turnOnLEDRange(0, 44, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         turnOnLEDRange(54, 62, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(72, 125, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         break;
 
       case 7:
         turnOffAllLEDs(ledStrip1, numLeds1);
         turnOnLEDRange(36, 53, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         turnOnLEDRange(0, 8, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(72, 125, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         break;
 
       case 8:
         turnOffAllLEDs(ledStrip1, numLeds1);
         turnOnLEDRange(0, 62, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(72, 125, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         break;
 
       case 9:
         turnOffAllLEDs(ledStrip1, numLeds1);
         turnOnLEDRange(27, 62, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         turnOnLEDRange(0, 17, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
+        turnOnLEDRange(72, 125, ledStrip1, numLeds1, ledStrip1.Color(0, 255, 0));
         break;
 
       case 10:
@@ -801,56 +811,67 @@ void displayNumberOut(int numberOut, Adafruit_NeoPixel &ledStrip2) {
 
       case 101:
         turnOffAllLEDs(ledStrip2, numLeds2);
-        turnOnLEDRange(0, 7, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
-        turnOnLEDRange(44, 52, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(71, 79, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(116, 124, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(0, 52, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+
         break;
 
       case 102:
         turnOffAllLEDs(ledStrip2, numLeds2);
-        turnOnLEDRange(8, 25, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
-        turnOnLEDRange(35, 61, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(107, 124, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(0, 52, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(80, 97, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(62, 70, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
         break;
 
       case 103:
         turnOffAllLEDs(ledStrip2, numLeds2);
-        turnOnLEDRange(8, 43, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
-        turnOnLEDRange(53, 61, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(62, 70, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(71, 88, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(107, 124, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(0, 52, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
         break;
 
       case 104:
         turnOffAllLEDs(ledStrip2, numLeds2);
-        turnOnLEDRange(0, 7, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
-        turnOnLEDRange(53, 61, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
-        turnOnLEDRange(17, 34, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(62, 79, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(98, 106, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(116, 124, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(0, 52, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
         break;
 
       case 105:
         turnOffAllLEDs(ledStrip2, numLeds2);
-        turnOnLEDRange(0, 16, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
-        turnOnLEDRange(26, 43, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
-        turnOnLEDRange(53, 61, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(62, 88, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(98, 115, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(0, 52, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
         break;
 
       case 106:
         turnOffAllLEDs(ledStrip2, numLeds2);
-        turnOnLEDRange(0, 16, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
-        turnOnLEDRange(26, 61, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(62, 115, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(0, 52, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
         break;
 
       case 107:
         turnOffAllLEDs(ledStrip2, numLeds2);
-        turnOnLEDRange(8, 34, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(107, 124, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(71, 79, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(0, 52, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
         break;
 
       case 108:
         turnOffAllLEDs(ledStrip2, numLeds2);
-        turnOnLEDRange(0, 61, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(62, 124, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(0, 52, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
         break;
 
       case 109:
         turnOffAllLEDs(ledStrip2, numLeds2);
-        turnOnLEDRange(0, 43, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
-        turnOnLEDRange(53, 61, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(62, 88, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(98, 124, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
+        turnOnLEDRange(0, 52, ledStrip2, numLeds2, ledStrip2.Color(255, 0, 0));
         break;
 
       case 110:
